@@ -1,6 +1,7 @@
 import { NuxtConfig } from '@nuxt/types'
 
 const config: NuxtConfig = {
+  srcDir: 'src',
   /*
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode

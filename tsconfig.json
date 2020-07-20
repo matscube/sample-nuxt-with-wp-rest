@@ -17,10 +17,10 @@
     "baseUrl": ".",
     "paths": {
       "~/*": [
-        "./*"
+        "./src/*"
       ],
       "@/*": [
-        "./*"
+        "./src/*"
       ]
     },
     "types": [
@@ -29,6 +29,9 @@
       "@nuxtjs/axios"
     ]
   },
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules",
     ".nuxt",
