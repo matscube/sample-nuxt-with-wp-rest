@@ -36,7 +36,7 @@ const config: NuxtConfig = {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['@/plugins/wp-rest.ts'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -53,12 +53,29 @@ const config: NuxtConfig = {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: [
+    // todo: add sample for axios
+    '@nuxtjs/proxy',
+  ],
+  // todo: use proxy for CORS error
+  // proxy: {
+  //   '/api': {
+  //     target: process.env.WP_API_ENDPOINT,
+  //     pathRewrite: {
+  //       '^/api' : '/'
+  //     }
+  //   }
+  // },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  publicRuntimeConfig: {
+    WP_API_ENDPOINT: process.env.WP_API_ENDPOINT,
+    WP_API_AUTH_BASIC_USER: process.env.WP_API_AUTH_BASIC_USER,
+  },
+  privateRuntimeConfig: {},
 }
 
 export default config

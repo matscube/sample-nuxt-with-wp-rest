@@ -1,9 +1,18 @@
 <template>
   <div>
+    <TheHeader />
     <Nuxt />
   </div>
 </template>
-
+<script lang="ts">
+import Vue from 'vue'
+import TheHeader from '@/components/TheHeader.vue'
+export default Vue.extend({
+  components: {
+    TheHeader,
+  },
+})
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
