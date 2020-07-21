@@ -8,6 +8,7 @@
     "start": "nuxt-ts start",
     "export": "nuxt-ts export",
     "serve": "nuxt-ts serve",
+    "test": "jest",
     "lint:js": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "format": "prettier './{src,test}/**/*.{js,ts,tsx,vue}' --write"
@@ -35,14 +36,17 @@
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/tailwindcss": "^2.0.0",
+    "@types/jest": "^26.0.5",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.2.5",
+    "jest": "^26.1.0",
     "lint-staged": "^10.2.11",
     "node-sass": "^4.14.1",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.3"
   }
 }
