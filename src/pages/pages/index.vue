@@ -19,30 +19,28 @@
 
     <div class="section">
       <h2 class="section__title">Posts</h2>
-      <div class="section__content posts">
-        <div class="post post--header">
-          <div class="post__item post__item--header">Last Modified</div>
-          <div class="post__item post__item--header">Title</div>
-          <div class="post__item post__item--header">Content</div>
-          <div class="post__item post__item--header">Link</div>
-        </div>
-        <div class="post">
-          <div class="post__item">{{ samplePost.modified }}</div>
-          <div class="post__item">{{ samplePost.title }}</div>
-          <div class="post__item">{{ samplePost.content }}</div>
-          <div class="post__item">
-            <nuxt-link :to="samplePost.link">
-              {{ samplePost.link }}
+      <table class="section__content posts">
+        <tr class="post post--header">
+          <th class="post__item post__item--header">Last Modified</th>
+          <th class="post__item post__item--header">Title</th>
+          <th class="post__item post__item--header">Link</th>
+        </tr>
+        <tr v-for="(post, index) in posts" :key="index" class="post">
+          <td class="post__item">{{ post.modified }}</td>
+          <td class="post__item">{{ post.title.rendered }}</td>
+          <td class="post__item">
+            <nuxt-link :to="post.link">
+              {{ post.link }}
             </nuxt-link>
-          </div>
-        </div>
-      </div>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
 <script lang="ts">
 import Vue from 'vue'
-import { Post, PagesSummary, createPostSample } from '@/types/struct'
+import { Post, PagesResponse } from '@/types/struct'
 
 type Status = 'ok' | 'error'
 interface LocalData {
@@ -54,28 +52,30 @@ interface LocalData {
 }
 export default Vue.extend({
   async asyncData(context) {
-    const summary: PagesSummary | null = await context.$getPagesSummary()
-    if (summary == null) {
+    const pagination = 1
+    const response: PagesResponse | null = await context.$getPages(pagination)
+    if (response === null) {
       return {
         loaded: false,
         status: 'error',
       }
     }
+    const summary = response.summary
+    const posts = response.posts
     return {
       loaded: true,
       status: 'ok',
       pageCount: summary.totalPost,
       paginationCount: summary.totalPage,
+      posts,
     }
   },
   data: (): LocalData => {
-    const posts = []
-    posts.push(createPostSample())
     return {
       loaded: false,
       pageCount: 0,
       paginationCount: 0,
-      posts,
+      posts: [],
     }
   },
   computed: {
@@ -85,10 +85,6 @@ export default Vue.extend({
       } else {
         return '取得中...'
       }
-    },
-    samplePost(): Post | null {
-      if (this.posts.length > 0) return this.posts[0]
-      else return null
     },
   },
 })
@@ -121,9 +117,7 @@ export default Vue.extend({
   max-width: 1000px;
 }
 .post {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  border-bottom: 1px solid lightgrey;
   &__item {
     padding: 16px 24px;
     &--header {

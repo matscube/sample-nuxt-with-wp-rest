@@ -22,7 +22,7 @@ export type Post = {
   title: {
     rendered: string
   }
-  content: any
+  content: string
   author?: number
   excerpt?: any
   featured_media?: number
@@ -44,4 +44,9 @@ export function createPostSample(): Post {
     },
     content: 'Sample content',
   }
+}
+
+export type PagesResponse = {
+  summary: PagesSummary
+  posts: Post[]
 }

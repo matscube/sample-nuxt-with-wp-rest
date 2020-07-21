@@ -34,6 +34,12 @@ html {
   margin: 0;
 }
 
+a {
+  &:hover {
+    color: $color-text-link;
+  }
+}
+
 .button--green {
   display: inline-block;
   border-radius: 4px;
