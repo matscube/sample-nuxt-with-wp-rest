@@ -33,6 +33,9 @@ const config: NuxtConfig = {
    ** Global CSS
    */
   css: [],
+  styleResources: {
+    scss: ['@/assets/css/variables.scss'],
+  },
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
@@ -50,6 +53,7 @@ const config: NuxtConfig = {
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/style-resources',
   ],
   /*
    ** Nuxt.js modules

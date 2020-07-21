@@ -22,7 +22,7 @@ export default Vue.extend({})
 .header {
   height: 80px;
   width: 100%;
-  background-color: lightgrey;
+  background-color: $color-primary;
   display: flex;
   justify-content: flex-start;
   align-items: center;

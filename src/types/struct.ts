@@ -33,3 +33,15 @@ export type Post = {
   template?: string
 }
 /* eslint-enable camelcase */
+export function createPostSample(): Post {
+  return {
+    date: '2020/01/01',
+    link: '/pages/2',
+    modified: '2020/02/01',
+    slug: 'sample',
+    title: {
+      rendered: 'sample post',
+    },
+    content: 'Sample content',
+  }
+}
