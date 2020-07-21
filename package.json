@@ -9,7 +9,8 @@
     "export": "nuxt-ts export",
     "serve": "nuxt-ts serve",
     "lint:js": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
-    "lint": "yarn lint:js"
+    "lint": "yarn lint:js",
+    "format": "prettier './{src,test}/**/*.{js,ts,tsx,vue}' --write"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint"
